@@ -1,3 +1,70 @@
+# Movie Blog App
+
+> [!IMPORTANT]
+>
+> Project Work a scopo didattico fatto in team durante il corso **Web & Mobile Development** del **ITS Steve Jobs Academy - Palermo - Corso 23**
+
+## Contributtori
+
+- Alberto Cangialosi
+- Calogero Raia
+- Alessandro Russo
+
+## Descrizione
+
+Questa è un'applicazione per un blog dedicato al cinema, sviluppata interamente in React. È pensata per gli appassionati di film che desiderano condividere recensioni su film di diversi generi.
+
+## Funzionalità
+
+- **Registrazione/Accesso**: Gli utenti possono registrarsi e accedere al blog.
+- **Visualizzazione dei Film**: Gli utenti possono cercare e visualizzare dettagli sui film.
+- **Recensioni**: Gli utenti possono scrivere e leggere recensioni sui film.
+- **Categorie**: Gli utenti possono cercare i film per categoria.
+- **Classifiche**: Gli utenti possono visualizzare classifiche dei film.
+
+## Tecnologie Utilizzate
+
+- **Frontend**: interfaccia utente sviluppata con React.js, dinamica e reattiva
+- **Backend**: Node.js per collegare API endpoints al database e gestire le requests
+- **Database**: MySQL per una gestione efficace dei dati
+
+## Installazione
+
+> [!TIP]
+>
+> Assicurarsi di avere installato [`git`][git] e [`node`][node] per usarli da command-line interface
+
+1. Clona il repository:
+
+   ```
+   git clone https://github.com/tuonome/movie-blog-app.git
+   ```
+
+2. Naviga nella directory del progetto:
+
+   ```
+   cd movie-blog-app
+   ```
+
+3. Installa le dipendenze:
+
+   ```
+   npm install
+   ```
+
+4. Avvia l'applicazione:
+   ```
+   npm start
+   ```
+5. Crea un file `.env.local` per configurare le necessarie variabili d'ambiente in locale.
+
+[git]: https://git-scm.com/book/it/v2/Per-Iniziare-Installing-Git
+[node]: https://nodejs.org/en/download
+
+---
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

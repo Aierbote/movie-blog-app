@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Mar 26, 2024 alle 13:40
--- Versione del server: 10.4.32-MariaDB
--- Versione PHP: 8.0.30
+-- Host: localhost
+-- Generation Time: Mar 26, 2024 at 06:04 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `movie-blog-app.sql`
+-- Database: `movie-blog-app`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `film`
+-- Table structure for table `film`
 --
 
 CREATE TABLE `film` (
@@ -38,7 +38,7 @@ CREATE TABLE `film` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dump dei dati per la tabella `film`
+-- Dumping data for table `film`
 --
 
 INSERT INTO `film` (`id`, `title`, `year`, `image`, `director`, `cast`, `genre`) VALUES
@@ -55,11 +55,11 @@ INSERT INTO `film` (`id`, `title`, `year`, `image`, `director`, `cast`, `genre`)
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `review`
+-- Table structure for table `review`
 --
 
 CREATE TABLE `review` (
-  `idReviews` int(11) NOT NULL,
+  `idReview` int(11) NOT NULL,
   `idFilm` int(11) DEFAULT NULL,
   `rating` int(11) DEFAULT NULL,
   `comment` varchar(255) DEFAULT NULL,
@@ -67,41 +67,48 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indici per le tabelle scaricate
+-- Dumping data for table `review`
+--
+
+INSERT INTO `review` (`idReview`, `idFilm`, `rating`, `comment`, `user`) VALUES
+(1, 1, 3, 'The Conjuring colpisce con una regia avvincente e performance convincenti, creando un\'atmosfera horror autentica. Tuttavia, potrebbe risultare prevedibile per alcuni.', 'motozzappa03'),
+(2, 1, 5, 'The Conjuring offre un\'esperienza horror efficace, grazie alla maestria di James Wan nel creare tensione e al fascino inquietante della trama basata su eventi reali.', 'betto'),
+(3, 2, 3, 'It del 2017 mescola abilmente terrore, commedia e nostalgia, grazie a una performance fenomenale di Bill Skarsgård come Pennywise. Tuttavia, il finale potrebbe deludere alcuni spettatori.', 'puposiculo'),
+(4, 2, 4, 'It cattura perfettamente l\'essenza del rapporto tra i giovani protagonisti, offrendo un viaggio emotivo tra l\'orrore e l\'amicizia. Nonostante alcune deviazioni dalla trama originale, resta un\'esperienza cinematografica avvincente e memorabile.', 'betto'),
+(5, 3, 5, 'Get Out è un thriller psicologico che mescola abilmente suspense e satira sociale, offrendo una visione inquietante e riflessiva sul razzismo. Le performance sono intense e la trama tiene incollati allo schermo fino all\'ultimo secondo.', 'princi<3'),
+(6, 3, 4, 'Un capolavoro del genere horror psicologico, Get Out affronta tematiche profonde come il razzismo in America con una trama intricata e una regia magistrale. Un\'esperienza cinematografica coinvolgente che lascia il pubblico con riflessioni durature.', 'puposiculo'),
+(7, 4, 5, 'Una notte da leoni è una commedia esilarante. Con battute taglienti e situazioni al limite, il film offre risate garantite dall\'inizio alla fine.', 'motozzappa03'),
+(8, 4, 3, 'Una commedia divertente e irriverente, \"Una notte da leoni\" cattura l\'essenza dell\'avventura caotica anche se può sembrare un pò grottesco in certe parti.', 'Gamabunta'),
+(9, 5, 2, 'Sebbene riprenda la formula vincente del suo predecessore, The Hangover - Parte II manca dell\'elemento sorpresa e rischia di diventare una ripetizione della stessa trama. Tuttavia, le gag comiche e l\'ambientazione esotica mantengono l\'atmosfera divertente', 'motozzappa03'),
+(10, 5, 3, 'Questo sequel non riesce a catturare lo stesso fascino del suo predecessore, offrendo una trama prevedibile e meno fresca. Nonostante ciò, gli attori mantengono il loro carisma e regalano ancora qualche risata.', 'Gamabunta'),
+(11, 6, 4, 'Cattivissimo Me è un\'animazione divertente e toccante che segue le avventure di Gru, un cattivo dal cuore tenero che si scioglie alla presenza di tre adorabili bambine. Con personaggi memorabili e una trama avvincente, è perfetto per tutta la famiglia.', 'puposiculo'),
+(12, 6, 5, 'Con il suo mix di comicità irresistibile e momenti dolci, \"Cattivissimo Me\" conquista il pubblico di tutte le età. Gli spettatori si affezionano ai personaggi eccentrici e alla storia che celebra l\'importanza della famiglia e del cambiamento personale.', 'betto'),
+(13, 7, 5, 'Avatar è un capolavoro visivo che trasporta gli spettatori in un mondo straordinario ricco di dettagli e colori. La trama coinvolgente e i personaggi ben sviluppati si combinano per creare un\'epica avventura che rimane impressa nella memoria.', 'Gamabunta'),
+(14, 7, 5, 'James Cameron trasporta il pubblico in un viaggio indimenticabile attraverso Pandora con \"Avatar\", un film che ridefinisce gli standard dell\'esperienza cinematografica. La combinazione di effetti speciali straordinari e una trama avvincente rende questo f', 'princi<3'),
+(15, 8, 5, 'Inception è un tour de force di Christopher Nolan, che sfida l\'intelletto dello spettatore con un intricato labirinto di sogno e realtà. Con una trama complessa e azione mozzafiato, questo film lascia il pubblico con interrogativi che persistono molto dop', 'motozzappa03'),
+(16, 8, 3, 'Bella l\'idea, un pò meno nell\'esecuzione. Qui Nolan vuole al suo solito complicare troppo le cose rendendo tutto un pò confusionario. Il film risulta comunque godibile alla fine.', 'princi<3'),
+(17, 9, 4, 'Interstellar è un\'epica spaziale che mescola scienza e fantasia in un viaggio emozionante attraverso l\'universo. Con una narrazione avvincente e effetti visivi mozzafiato, il film esplora temi universali come l\'amore, la perdita e la ricerca della salvezz', 'Gamabunta'),
+(18, 9, 5, 'Christopher Nolan si avventura nello spazio con Interstellar, offrendo una visione ambiziosa e emozionante del futuro dell\'umanità. Con una colonna sonora potente e performance straordinarie, questo film cattura l\'immaginazione e tocca il cuore degli spet', 'motozzappa03');
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `film`
+-- Indexes for table `film`
 --
 ALTER TABLE `film`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `review`
---
-ALTER TABLE `review`
-  ADD PRIMARY KEY (`idReviews`),
-  ADD KEY `idFilm` (`idFilm`);
-
---
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `film`
+-- AUTO_INCREMENT for table `film`
 --
 ALTER TABLE `film`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- Limiti per le tabelle scaricate
---
-
---
--- Limiti per la tabella `review`
---
-ALTER TABLE `review`
-  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`idFilm`) REFERENCES `film` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

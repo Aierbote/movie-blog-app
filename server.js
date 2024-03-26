@@ -48,3 +48,40 @@ app.get('/films/:id', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+
+app.put('/films/:id', async (req, res) => {
+  const filmId = req.params.id;
+  const { title, year, image, director, cast, genre } = req.body;
+
+
+  if (!title || !year || !image || !director || !cast || !genre) {
+    return res.status(400).json({ error: 'Tutti i campi sono obbligatori' });
+  }
+
+  const updatedCast = JSON.stringify(cast);
+
+  const updateFilmQuery = `
+    UPDATE film 
+    SET title = ?, year = ?, image = ?, director = ?, cast = ?, genre = ? 
+    WHERE id = ?
+  `;
+
+
+  connection.query(
+    updateFilmQuery,
+    [title, year, image, director, updatedCast, genre, filmId],
+    (err, results, fields) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Errore interno del server' });
+      }
+
+      if (results.affectedRows === 0) {
+        return res.status(404).json({ error: 'Film non trovato' });
+      }
+
+      res.json({ message: 'Film aggiornato' });
+    }
+  );
+});

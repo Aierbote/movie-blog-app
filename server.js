@@ -16,40 +16,40 @@ app.get('/', async (req, res) => {
   res.json({ message: 'Welcome to the Movie Blog API' });
 });
 
-// DEBUG :
-console.log('connection', connection);
-
 app.get('/films/:id', async (req, res) => {
-
   const filmId = req.params.id;
-  const sql = `SELECT * FROM film WHERE id = ?`;
+  const sql = `SELECT * FROM film WHERE id = ${filmId}`;
 
-  try {
-    const [results, fields] = await connection.execute(sql, [filmId]);
+  connection.query(
+    sql,
+    (err, results, fields) => {
 
-    if (results.length === 0) {
-      return res.status(404).json({ error: 'Film not found' });
+      if (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+        return;
+      }
+
+      if (results.length === 0) {
+        return res.status(404).json({ error: 'Film not found' });
+      }
+
+      const film = results[0];
+      const cast = JSON.parse(film.cast || '[]');
+      const parsedFilm = {
+        id: filmId,
+        title: film.title,
+        year: film.year,
+        image: film.image,
+        director: film.director,
+        cast: cast,
+        genre: film.genre
+      };
+
+      res.json(parsedFilm);
     }
 
-    const film = results[0];
-
-    const cast = JSON.parse(film.cast || '[]');
-
-    const parsedFilm = {
-      id: filmId,
-      title: film.title,
-      year: film.year,
-      image: film.image,
-      director: film.director,
-      cast: cast,
-      genre: film.genre
-    };
-
-    res.json(parsedFilm);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+  );
 });
 
 app.listen(PORT, () => {

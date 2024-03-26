@@ -110,6 +110,28 @@ app.post('/films/', async (req, res) => {
 
 })
 
+app.delete('/films/:id', async (req, res) => {
+  const filmId = req.params.id;
+
+  const deleteFilmQuery = `DELETE FROM film WHERE id = ?`;
+
+  connection.query(
+    deleteFilmQuery,
+    [filmId],
+    (err, results, fields) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Errore interno del server' });
+      }
+
+      if (results.affectedRows === 0) {
+        return res.status(404).json({ error: 'Film non trovato' });
+      }
+
+      res.json({ message: 'Film eliminato' });
+    }
+  );
+});
 
 
 app.listen(PORT, () => {

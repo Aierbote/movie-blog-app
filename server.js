@@ -82,6 +82,36 @@ app.put('/films/:id', async (req, res) => {
   );
 });
 
+
+app.post('/films/', async (req, res) => {
+
+  const { title, year, image, director, cast, genre } = req.body;
+  const updatedCast = JSON.stringify(cast);
+
+  if (!title || !year || !image || !director || !updatedCast || !genre) {
+    return res.status(400).json({ error: 'Tutti i campi sono obbligatori' });
+  }
+
+  const query = `INSERT INTO film (title, year, image, director, cast, genre) VALUES ('${title}', '${year}', '${image}', '${director}', '${updatedCast}', '${genre}')`;
+
+  connection.query(
+
+    query,
+    (err, results, fields) => {
+
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Errore interno del server' });
+      }
+
+      res.json({ message: `Film aggiunto` });
+    }
+  )
+
+})
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

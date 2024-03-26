@@ -34,16 +34,9 @@ app.get('/films/:id', async (req, res) => {
         return res.status(404).json({ error: 'Film not found' });
       }
 
-      const film = results[0];
-      const cast = JSON.parse(film.cast || '[]');
       const parsedFilm = {
-        id: filmId,
-        title: film.title,
-        year: film.year,
-        image: film.image,
-        director: film.director,
-        cast: cast,
-        genre: film.genre
+        ...results[0],
+        cast: JSON.parse(results[0].cast || '[]')
       };
 
       res.json(parsedFilm);

@@ -37,7 +37,7 @@ reviews = array(Review);
 | ------ | ------------- |
 | GET    | `/films`      |
 | GET    | `/films/{id}` |
-| POST   | `/films/{id}` |
+| POST   | `/films/`     |
 | PUT    | `/films/{id}` |
 | DELETE | `/films/{id}` |
 
@@ -46,6 +46,6 @@ reviews = array(Review);
 | Method | Endpoint                              |
 | ------ | ------------------------------------- |
 | GET    | `/films/{id}/reviews`                 |
-| POST   | `/films/{idFilm}/reviews/{idReviews}` |
+| POST   | `/films/{idFilm}/reviews/`            |
 | PUT    | `/films/{idFilm}/reviews/{idReviews}` |
 | DELETE | `/films/{idFilm}/reviews/{idReviews}` |

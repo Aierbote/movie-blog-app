@@ -45,10 +45,6 @@ app.get('/films/:id', async (req, res) => {
   );
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
-
 
 app.put('/films/:id', async (req, res) => {
   const filmId = req.params.id;
@@ -62,8 +58,8 @@ app.put('/films/:id', async (req, res) => {
   const updatedCast = JSON.stringify(cast);
 
   const updateFilmQuery = `
-    UPDATE film 
-    SET title = ?, year = ?, image = ?, director = ?, cast = ?, genre = ? 
+    UPDATE film
+    SET title = ?, year = ?, image = ?, director = ?, cast = ?, genre = ?
     WHERE id = ?
   `;
 
@@ -84,4 +80,8 @@ app.put('/films/:id', async (req, res) => {
       res.json({ message: 'Film aggiornato' });
     }
   );
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

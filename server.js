@@ -16,6 +16,35 @@ app.get('/', async (req, res) => {
   res.json({ message: 'Welcome to the Movie Blog API' });
 });
 
+app.get('/films', async (req, res) => {
+  const sql = `SELECT * FROM film`;
+
+  connection.query(
+    sql,
+    (err, results, fields) => {
+    if (err) {
+      console.error('Errore durante la connessione al database:', err);
+      return;
+    }
+    const parsedFilms = results.map(film => ({
+      ...film,
+      cast: JSON.parse(film.cast || '[]')
+    }));
+
+    res.json(parsedFilms);
+
+  });
+})
+
+
+
+
+
+
+
+
+
+
 app.get('/films/:id', async (req, res) => {
   const filmId = req.params.id;
   const sql = `SELECT * FROM film WHERE id = ${filmId}`;

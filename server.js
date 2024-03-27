@@ -134,6 +134,30 @@ app.delete('/films/:id', async (req, res) => {
 });
 
 
+app.post('/films/:idFilm/reviews', async (req, res) => {
+  const idFilm = req.params.idFilm;
+  const { rating, comment, user } = req.body;
+
+  if (!rating || !comment || !user) {
+    return res.status(400).json({ error: 'Tutti i campi sono obbligatori' });
+  }
+
+  const query = `INSERT INTO review ( idFilm, rating, comment, user) VALUES ('${idFilm}', '${rating}', '${comment}', '${user}')`;
+
+  connection.query(
+    query,
+    (err, results, fields) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Errore interno del server' });
+      }
+
+      res.json({ message: 'Recensione aggiunta' });
+    }
+  );
+
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

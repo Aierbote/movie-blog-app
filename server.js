@@ -22,18 +22,18 @@ app.get('/films', async (req, res) => {
   connection.query(
     sql,
     (err, results, fields) => {
-    if (err) {
-      console.error('Errore durante la connessione al database:', err);
-      return;
-    }
-    const parsedFilms = results.map(film => ({
-      ...film,
-      cast: JSON.parse(film.cast || '[]')
-    }));
+      if (err) {
+        console.error('Errore durante la connessione al database:', err);
+        return;
+      }
+      const parsedFilms = results.map(film => ({
+        ...film,
+        cast: JSON.parse(film.cast || '[]')
+      }));
 
-    res.json(parsedFilms);
+      res.json(parsedFilms);
 
-  });
+    });
 })
 
 
@@ -162,6 +162,23 @@ app.delete('/films/:id', async (req, res) => {
   );
 });
 
+app.get('/films/:idFilm/reviews', async (req, res) => {
+  const idFilm = req.params.idFilm;
+  const sql = `SELECT * FROM review WHERE idFilm = ${idFilm}`;
+
+  connection.query(
+    sql,
+    (err, results, fields) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Errore interno del server' });
+      }
+
+      res.json(results);
+    }
+  );
+});
+
 
 app.post('/films/:idFilm/reviews', async (req, res) => {
   const idFilm = req.params.idFilm;
@@ -243,7 +260,7 @@ app.delete('/films/:idFilm/reviews/:idReview', async (req, res) => {
       res.json({ message: 'Recensione eliminata' });
     }
   );
-  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

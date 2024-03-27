@@ -221,6 +221,30 @@ app.put('/films/:idFilm/reviews/:idReview', async (req, res) => {
 
 })
 
+app.delete('/films/:idFilm/reviews/:idReview', async (req, res) => {
+  const filmId = req.params.idFilm;
+  const reviewId = req.params.idReview;
+
+  const deleteReviewQuery = `DELETE FROM review WHERE idReview = ? AND idFilm = ?`;
+
+  connection.query(
+    deleteReviewQuery,
+    [reviewId, filmId],
+    (err, results, fields) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Errore interno del server' });
+      }
+
+      if (results.affectedRows === 0) {
+        return res.status(404).json({ error: 'Recensione non trovata' });
+      }
+
+      res.json({ message: 'Recensione eliminata' });
+    }
+  );
+  });
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

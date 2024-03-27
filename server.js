@@ -174,6 +174,10 @@ app.get('/films/:idFilm/reviews', async (req, res) => {
         return res.status(500).json({ error: 'Errore interno del server' });
       }
 
+      if (results.length === 0) {
+        return res.status(404).json({ error: 'Recensioni non trovate' });
+      }
+
       res.json(results);
     }
   );

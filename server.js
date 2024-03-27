@@ -158,6 +158,40 @@ app.post('/films/:idFilm/reviews', async (req, res) => {
 
 });
 
+app.put('/films/:idFilm/reviews/:idReview', async (req, res) => {
+  const filmId = req.params.idFilm;
+  const reviewId = req.params.idReview;
+  const { comment, rating, user } = req.body;
+
+  if (!comment || !rating || !user) {
+    return res.status(400).json({ error: 'Tutti i campi sono obbligatori' });
+  }
+
+  const updateRewiewQuery = `
+      UPDATE review
+      SET comment = ?, rating = ?, user = ?
+      WHERE idReview = ? AND idFilm = ?
+    `;
+
+  connection.query(
+    updateRewiewQuery,
+    [comment, rating, user, reviewId, filmId],
+    (err, results, fields) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: 'Errore interno del server' });
+      }
+
+      if (results.affectedRows === 0) {
+        return res.status(404).json({ error: 'Recensione non trovata' });
+      }
+
+      res.json({ message: 'Recensione aggiornata' });
+    }
+  );
+
+})
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

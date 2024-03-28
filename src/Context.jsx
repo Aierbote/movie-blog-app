@@ -23,16 +23,12 @@ const AppProvider = ({ children }) => {
 			const response = await fetch("http://localhost:8080/films");
 
 			if (!response.ok) {
-				// DEBUG :
-				const errorMessage = await response.text();
-				console.error("Server responded with error:", errorMessage);
-
 				throw new Error("Network response was not ok");
 			}
 
 			const data = await response.json();
-			localStorage.setItem("movies", JSON.stringify(data.films));
-			return data.films;
+			localStorage.setItem("movies", JSON.stringify(data));
+			return data;
 		} catch (error) {
 			console.error("Error fetching movies:", error);
 			throw error;

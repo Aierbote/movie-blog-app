@@ -55,23 +55,34 @@ function MoviePage() {
 }
 
 function NotFound() {
+  const timer = 5;
   const [isRedirecting, setIsRedirecting] = useState(false);
+  const [countdown, setCountdown] = useState(timer);
 
   useEffect(() => {
-    /* NOTE : Redirect after 5 seconds */
+    /* NOTE : To redirect after X seconds of countdown */
     setTimeout(() => {
       setIsRedirecting(true)
-    }, 5_000)
+    }, timer * 1_000)
   }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCountdown((prevCountdown) => prevCountdown - 1);
+    }, 1_000);
+
+    return () => clearInterval(interval);
+  })
 
   if (isRedirecting) {
     return <Navigate to="/" />
   }
 
+
   return (
     <div>
       <h1>404 Not Found</h1>
-      <p>Redirecting in 5 seconds...</p>
+      <p>Redirecting in {countdown} seconds...</p>
     </div>
   );
 }

@@ -55,6 +55,19 @@ function MoviePage() {
 }
 
 function NotFound() {
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
+  useEffect(() => {
+    /* NOTE : Redirect after 5 seconds */
+    setTimeout(() => {
+      setIsRedirecting(true)
+    }, 5_000)
+  }, [])
+
+  if (isRedirecting) {
+    return <Navigate to="/" />
+  }
+
   return (
     <div>
       <h1>404 Not Found</h1>

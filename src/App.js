@@ -11,23 +11,19 @@ const routes = [
   {
     path: '/',
     component: Home,
-    exact: true,
   },
   {
     path: '/about',
     component: About,
-    exact: false,
   },
   {
     path: '/movie/:idFilm',
     component: MoviePage,
-    exact: false,
   },
   // NOTE : This route must ALWAYS be the last one
   {
     path: '*',
     component: NotFound,
-    exact: false,
   },
 ]
 

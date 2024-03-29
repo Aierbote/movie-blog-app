@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import TitlebarImageList from './components/TitlebarImageList';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './routes/Home';
 import { About } from './routes/About';
@@ -43,6 +44,9 @@ function App() {
             />
           ))}
         </Routes>
+
+        {/* ImageList */}
+        <TitlebarImageList />
 
         <Footer />
       </BrowserRouter>

@@ -16,10 +16,11 @@ const routes = [
     exact: false,
   },
   {
-    path: '/movie/:id',
+    path: '/movie/:idFilm',
     component: MoviePage,
     exact: false,
   },
+  // NOTE : This route must ALWAYS be the last one
   {
     path: '*',
     component: NotFound,
@@ -45,7 +46,7 @@ function About() {
 }
 
 function MoviePage() {
-  const { id: idFilm } = useParams();
+  const { idFilm } = useParams();
 
   return (
     <div>

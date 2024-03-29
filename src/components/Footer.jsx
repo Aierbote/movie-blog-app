@@ -13,6 +13,7 @@ export default function StickyFooter() {
             <Box
                 sx={{
                     display: 'flex',
+                    justifyContent: 'center',
                     flexDirection: 'column',
                     minHeight: '100vh',
                 }}
@@ -30,15 +31,15 @@ export default function StickyFooter() {
                                 : theme.palette.grey[800],
                     }}
                 >
-                    <Container maxWidth="auto" justifyContent='center'  >
+                    <Container maxWidth="auto">
                         <Typography variant="body2" style={{ display: 'flex', justifyContent: 'center', gap: '0px 20rem' }}>
                             <span>
-                                Project Work ITS Steve Jobs Academy corso 23<br></br>
-                                    -----------------------------------<br></br>
-                                    Copyright© by:<br></br>
-                                    -Alberto Cangialosi<br></br>
-                                    -Calogero Raia<br></br>
-                                    -Alessandro Russo<br></br>
+                                Project Work ITS Steve Jobs Academy corso 23<br/>
+                                    -----------------------------------<br/>
+                                    Copyright© by:<br/>
+                                    -Alberto Cangialosi<br/>
+                                    -Calogero Raia<br/>
+                                    -Alessandro Russo<br/>
                             </span>
                             <span>
                                 <img src="https://tse1.mm.bing.net/th?id=OIP.9M6x8cSTpnxfkJPLtt-PzAHaDh&pid=Api&P=0&h=180" alt="SteveJobsAcademy" />

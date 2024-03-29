@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppContext } from "../Context";
-
+import { useNavigate } from "react-router-dom";
 
 export function MoviePage() {
 	const { idFilm } = useParams();
 	const { reviews, setReviews } = useAppContext();
+	const navigate = useNavigate();
 
 	async function utilityFetchReviews() {
 		try {
@@ -25,10 +26,21 @@ export function MoviePage() {
 	}
 
 	useEffect(() => {
-		if (!reviews.length) {
-			const fetchedReviews = utilityFetchReviews();
-			setReviews(fetchedReviews);
-		}
+		const fetchData = async () => {
+			const parsedIdFilm = parseInt(idFilm);
+			if (!isNaN(parsedIdFilm) && !reviews.length) {
+				try {
+					const fetchedReviews = await utilityFetchReviews();
+					setReviews(fetchedReviews);
+				} catch (error) {
+					navigate("/NotFound");
+				}
+			} else {
+				navigate("/NotFound");
+			}
+		};
+
+		fetchData();
 	}, []);
 
 

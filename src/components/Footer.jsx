@@ -32,18 +32,17 @@ export default function StickyFooter() {
                 >
                     <Container maxWidth="auto" justifyContent='center'  >
                         <Typography variant="body2" style={{ display: 'flex', justifyContent: 'center', gap: '0px 20rem' }}>
-                            <div>
+                            <span>
                                 Project Work ITS Steve Jobs Academy corso 23<br></br>
                                     -----------------------------------<br></br>
                                     Copyright© by:<br></br>
                                     -Alberto Cangialosi<br></br>
                                     -Calogero Raia<br></br>
                                     -Alessandro Russo<br></br>
-                                
-                            </div>
-                            <div>
+                            </span>
+                            <span>
                                 <img src="https://tse1.mm.bing.net/th?id=OIP.9M6x8cSTpnxfkJPLtt-PzAHaDh&pid=Api&P=0&h=180" alt="SteveJobsAcademy" />
-                            </div>
+                            </span>
                         </Typography>
                     </Container>
                 </Box>

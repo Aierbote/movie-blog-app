@@ -36,15 +36,6 @@ app.get('/films', async (req, res) => {
     });
 })
 
-
-
-
-
-
-
-
-
-
 app.get('/films/:id', async (req, res) => {
   const filmId = req.params.id;
   const sql = `SELECT * FROM film WHERE id = ${filmId}`;

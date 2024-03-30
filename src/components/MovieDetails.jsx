@@ -1,30 +1,49 @@
-//crea un componente moviedettails che mostra i dettagli del film 
+import { useEffect, useState } from "react";
+import { useAppContext } from "../Context";
 
-import React from 'react';
+export function MovieDetails({ idFilm }) {
+	const [selectedMovie, setSelectedMovie] = useState({});
+	const { movies } = useAppContext();
 
-function MovieDetails(props) {
-  const { imagine, title, year, director, cast, genre } = props;
+	useEffect(() => {
+		const currentMovie = movies.find(
+			(movie_) => movie_.id === parseInt(idFilm)
+		);
 
-  return (
-    <div> 
-      <h2>{genre} - {title}</h2>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
-        <div style={{ marginRight: '20px' }}>
-          <img src={imagine} alt={title} style={{ width: '150px', height: '200px' }} />
-        </div>
-        <div>
-          <p>{year}</p>
-          <p><strong>Regista:</strong> {director}</p>
-          <p><strong>Cast:</strong> {cast}</p>
-          <p>Descrizione: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor velit eget posuere porta.</p>
-        </div>
-      </div>
-    </div>
-  );
+		console.log("selectedMovie.title", selectedMovie.title);
+
+		setSelectedMovie(currentMovie);
+	}, []);
+
+	return (
+		<div>
+			<h2>
+				{selectedMovie.genre} - {selectedMovie.title}
+			</h2>
+			<div
+				style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}
+			>
+				<div style={{ marginRight: "20px" }}>
+					<img
+						src={selectedMovie.image}
+						alt={selectedMovie.title}
+						style={{ width: "150px", height: "200px" }}
+					/>
+				</div>
+				<div>
+					<p>{selectedMovie.year}</p>
+					<p>
+						<strong>Regista:</strong> {selectedMovie.director}
+					</p>
+					<p>
+						<strong>Cast:</strong> {selectedMovie.cast}
+					</p>
+					<p>
+						Descrizione: Lorem ipsum dolor sit amet, consectetur adipiscing
+						elit. Donec auctor velit eget posuere porta.
+					</p>
+				</div>
+			</div>
+		</div>
+	);
 }
-
-
-
-
-
-export default MovieDetails;

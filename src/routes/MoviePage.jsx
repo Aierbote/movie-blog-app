@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useAppContext } from "../Context";
 import { useNavigate } from "react-router-dom";
+import { MovieDetails } from "../components/MovieDetails";
 
 export function MoviePage() {
 	const { idFilm } = useParams();
@@ -10,7 +11,9 @@ export function MoviePage() {
 
 	async function utilityFetchReviews() {
 		try {
-			const response = await fetch(`http://localhost:8080/films/${idFilm}/reviews`);
+			const response = await fetch(
+				`http://localhost:8080/films/${idFilm}/reviews`
+			);
 
 			if (!response.ok) {
 				throw new Error("Network response was not ok");
@@ -41,6 +44,7 @@ export function MoviePage() {
 		};
 
 		fetchData();
+
 		return () => {
 			setReviews([]);
 			localStorage.removeItem("reviews");
@@ -50,6 +54,8 @@ export function MoviePage() {
 	return (
 		<div>
 			<h1>Movie Page {idFilm}</h1>
+
+			<MovieDetails idFilm={idFilm} />
 		</div>
 	);
 }

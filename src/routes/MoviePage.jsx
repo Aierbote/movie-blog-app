@@ -41,8 +41,11 @@ export function MoviePage() {
 		};
 
 		fetchData();
+		return () => {
+			setReviews([]);
+			localStorage.removeItem("reviews");
+		};
 	}, []);
-
 
 	return (
 		<div>

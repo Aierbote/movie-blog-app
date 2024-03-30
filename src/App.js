@@ -1,6 +1,5 @@
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import TitlebarImageList from './components/TitlebarImageList';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './routes/Home';
 import { About } from './routes/About';
@@ -45,8 +44,6 @@ const App = memo(() => {
             />
           ))}
         </Routes>
-
-        <TitlebarImageList />
       </BrowserRouter>
       <Footer />
     </>

@@ -6,6 +6,7 @@ import { About } from './routes/About';
 import { MoviePage } from './routes/MoviePage';
 import { NotFound } from './routes/NotFound';
 import { memo } from 'react';
+import { Suspense } from 'react';
 
 
 const routes = [
@@ -32,19 +33,22 @@ const App = memo(() => {
   return (
     <>
       <Navbar />
-      <BrowserRouter>
 
-        <Routes>
-          {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              element={<route.component />}
-              exact={route.exact}
-            />
-          ))}
-        </Routes>
+      <BrowserRouter>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                element={<route.component />}
+                exact={route.exact}
+              />
+            ))}
+          </Routes>
+        </Suspense >
       </BrowserRouter>
+
       <Footer />
     </>
   );

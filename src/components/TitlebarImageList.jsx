@@ -4,14 +4,31 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 import { useAppContext } from "../Context";
+import { useNavigate } from "react-router-dom";
+import { memo, useCallback } from "react";
 
-export default function TitlebarImageList() {
+const TitlebarImageList = memo(() => {
 	const { movies } = useAppContext();
+	const navigate = useNavigate();
+
+	const onImageClick = useCallback(
+		(id) => {
+			console.log("Image clicked", id);
+
+			console.log("Navigating to /movie/:id", id);
+			navigate(`/movie/${id}`);
+		},
+		[navigate]
+	);
 
 	return (
 		<ImageList sx={{ width: "auto", height: "auto", margin: "1rem" }} cols={5}>
 			{movies.map((item) => (
-				<ImageListItem key={item.id} cols={1}>
+				<ImageListItem
+					key={item.id}
+					cols={1}
+					onClick={() => onImageClick(item.id)}
+				>
 					<img
 						src={`${item.image}?w=248&fit=crop&auto=format`}
 						alt={item.title}
@@ -33,4 +50,6 @@ export default function TitlebarImageList() {
 			))}
 		</ImageList>
 	);
-}
+});
+
+export default TitlebarImageList;

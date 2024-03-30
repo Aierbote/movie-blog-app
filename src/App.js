@@ -6,6 +6,7 @@ import { Home } from './routes/Home';
 import { About } from './routes/About';
 import { MoviePage } from './routes/MoviePage';
 import { NotFound } from './routes/NotFound';
+import { memo } from 'react';
 
 
 const routes = [
@@ -28,11 +29,11 @@ const routes = [
   },
 ]
 
-function App() {
+const App = memo(() => {
   return (
     <>
+      <Navbar />
       <BrowserRouter>
-        <Navbar />
 
         <Routes>
           {routes.map((route, index) => (
@@ -45,13 +46,11 @@ function App() {
           ))}
         </Routes>
 
-        {/* ImageList */}
         <TitlebarImageList />
-
-        <Footer />
       </BrowserRouter>
+      <Footer />
     </>
   );
-}
+})
 
 export default App;

@@ -42,7 +42,6 @@ const App = memo(() => {
                 key={index}
                 path={route.path}
                 element={<route.component />}
-                exact={route.exact}
               />
             ))}
           </Routes>

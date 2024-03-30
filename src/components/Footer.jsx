@@ -31,21 +31,31 @@ export default function StickyFooter() {
                                 : theme.palette.grey[800],
                     }}
                 >
-                    <Container maxWidth="auto">
-                        <Typography variant="body2" style={{ display: 'flex', justifyContent: 'center', gap: '0px 20rem' }}>
-                            <span>
-                                Project Work ITS Steve Jobs Academy corso 23<br/>
-                                    -----------------------------------<br/>
-                                    Copyright© by:<br/>
-                                    -Alberto Cangialosi<br/>
-                                    -Calogero Raia<br/>
-                                    -Alessandro Russo<br/>
-                            </span>
-                            <span>
-                                <img src="https://tse1.mm.bing.net/th?id=OIP.9M6x8cSTpnxfkJPLtt-PzAHaDh&pid=Api&P=0&h=180" alt="SteveJobsAcademy" />
-                            </span>
-                        </Typography>
-                    </Container>
+                    <Box maxWidth="auto" sx={{ display: 'flex', justifyContent: 'center', gap: '0px 20rem', alignItems: 'center' }}>
+                        <Box>
+                            <Typography variant="body2">
+                                Project Work ITS Steve Jobs Academy corso 23
+                            </Typography>
+                            <Typography variant="body2">
+                                -----------------------------------
+                            </Typography>
+                            <Typography variant="body2">
+                                Copyright© by:
+                            </Typography>
+                            <Typography variant="body2">
+                                -Alberto Cangialosi
+                            </Typography>
+                            <Typography variant="body2">
+                                -Calogero Raia
+                            </Typography>
+                            <Typography variant="body2">
+                                -Alessandro Russo
+                            </Typography>
+                        </Box>
+                        <Box>
+                            <img src="https://tse1.mm.bing.net/th?id=OIP.9M6x8cSTpnxfkJPLtt-PzAHaDh&pid=Api&P=0&h=180" alt="SteveJobsAcademy" />
+                        </Box>
+                    </Box>
                 </Box>
             </Box>
         </ThemeProvider>

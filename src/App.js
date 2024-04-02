@@ -6,7 +6,7 @@ import { About } from './routes/About';
 import { MoviePage } from './routes/MoviePage';
 import { NotFound } from './routes/NotFound';
 import { memo, Suspense } from 'react';
-import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 
@@ -40,7 +40,7 @@ const App = memo(() => {
       <BrowserRouter>
         <Navbar />
 
-        <Container
+        <Box
           sx={{
             width: {
               xs: "100%",
@@ -49,6 +49,13 @@ const App = memo(() => {
               lg: "85%",
               xl: "80%",
             },
+
+            margin: "auto",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            minHeight: "80vh",
           }}>
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>
@@ -61,7 +68,7 @@ const App = memo(() => {
               ))}
             </Routes>
           </Suspense >
-        </Container >
+        </Box >
       </BrowserRouter>
 
       <Footer />

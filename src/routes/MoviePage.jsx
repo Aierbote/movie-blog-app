@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useAppContext } from "../Context";
 import { useNavigate } from "react-router-dom";
 import { MovieDetails } from "../components/MovieDetails";
+import FormReview from "../components/FormReview";
 
 export function MoviePage() {
 	const { idFilm } = useParams();
@@ -56,6 +57,7 @@ export function MoviePage() {
 			<h1>Movie Page {idFilm}</h1>
 
 			<MovieDetails idFilm={idFilm} />
+			<FormReview idFilm={idFilm} />
 		</div>
 	);
 }

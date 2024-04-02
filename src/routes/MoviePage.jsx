@@ -68,15 +68,14 @@ export function MoviePage() {
 
 			<MovieDetails idFilm={idFilm} />
 
-			<FormReview idFilm={idFilm} />
-
+			{/* Reviews List */}
 			<AlignItemsList>
-				{reviews.map((review) => {
-					console.log("review", review);
-
-					return <Review key={review.id} review={review} />;
-				})}
+				{reviews.map((review) => (
+					<Review key={review.id} review={review} />
+				))}
 			</AlignItemsList>
+
+			<FormReview idFilm={idFilm} />
 		</div>
 	);
 }

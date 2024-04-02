@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../Context";
+import Box from "@mui/material/Box";
 
 export function MovieDetails({ idFilm }) {
 	const [selectedMovie, setSelectedMovie] = useState({});
@@ -20,14 +21,23 @@ export function MovieDetails({ idFilm }) {
 			<h2>
 				{selectedMovie.genre} - {selectedMovie.title}
 			</h2>
-			<div
-				style={{ display: "flex", alignItems: "center", marginBottom: "20px" }}
+			<Box
+				sx={{
+					display: "flex",
+					alignItems: "center",
+					marginBottom: "20px",
+					maxWidth: "100vw",
+				}}
+				mt={{ sm: 1, md: 3 }}
 			>
-				<div style={{ marginRight: "20px" }}>
+				<div sx={{ flex: 1, marginRight: "20px" }}>
 					<img
 						src={selectedMovie.image}
 						alt={selectedMovie.title}
-						style={{ width: "150px", height: "200px" }}
+						style={{
+							maxWidth: "85vw",
+							maxHeight: "85vh",
+						}}
 					/>
 				</div>
 				<div>
@@ -43,7 +53,7 @@ export function MovieDetails({ idFilm }) {
 						elit. Donec auctor velit eget posuere porta.
 					</p>
 				</div>
-			</div>
+			</Box>
 		</div>
 	);
 }

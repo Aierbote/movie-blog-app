@@ -5,8 +5,8 @@ import { Home } from './routes/Home';
 import { About } from './routes/About';
 import { MoviePage } from './routes/MoviePage';
 import { NotFound } from './routes/NotFound';
-import { memo } from 'react';
-import { Suspense } from 'react';
+import { memo, Suspense } from 'react';
+import Container from "@mui/material/Container";
 
 
 const routes = [
@@ -32,20 +32,33 @@ const routes = [
 const App = memo(() => {
   return (
     <>
-      
+
+
       <BrowserRouter>
-      <Navbar />
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                element={<route.component />}
-              />
-            ))}
-          </Routes>
-        </Suspense >
+        <Navbar />
+
+        <Container
+          sx={{
+            width: {
+              xs: "100%",
+              sm: "95%",
+              md: "90%",
+              lg: "85%",
+              xl: "80%",
+            },
+          }}>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              {routes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={<route.component />}
+                />
+              ))}
+            </Routes>
+          </Suspense >
+        </Container >
       </BrowserRouter>
 
       <Footer />

@@ -32,9 +32,9 @@ const routes = [
 const App = memo(() => {
   return (
     <>
-      <Navbar />
-
+      
       <BrowserRouter>
+      <Navbar />
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             {routes.map((route, index) => (

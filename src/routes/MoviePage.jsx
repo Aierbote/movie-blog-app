@@ -9,7 +9,7 @@ import List from "@mui/material/List";
 
 function AlignItemsList({ children }) {
 	return (
-		<List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+		<List sx={{ width: "100%", bgcolor: "background.paper" }} maxWidth="90%">
 			{children}
 		</List>
 	);

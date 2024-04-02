@@ -5,10 +5,9 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
-import { useState } from "react";
 
-const Review = () => {
-	const [rating, setRating] = useState(4);
+const Review = ({ review }) => {
+	const { idReview, idFilm, rating, comment, user: author } = review;
 
 	return (
 		<div>
@@ -24,21 +23,14 @@ const Review = () => {
 								variant="body2"
 								color="text.primary"
 							>
-								User
+								{author || "Anonymous"}
 							</Typography>
 						</>
 					}
 					secondary={
 						<>
-							<Rating
-								readOnly
-								name="simple-controlled"
-								value={rating}
-								onChange={(event, newValue) => {
-									setRating(newValue);
-								}}
-							/>
-							<Typography>Comment</Typography>
+							<Rating readOnly name="simple-controlled" value={rating} />
+							{!!comment && <Typography>{comment}</Typography>}
 						</>
 					}
 				/>

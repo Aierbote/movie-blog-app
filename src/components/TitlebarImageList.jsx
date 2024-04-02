@@ -28,6 +28,7 @@ const TitlebarImageList = memo(() => {
 					key={item.id}
 					cols={1}
 					onClick={() => onImageClick(item.id)}
+					sx={{ cursor: "pointer" }}
 				>
 					<img
 						src={`${item.image}?w=248&fit=crop&auto=format`}

@@ -23,6 +23,15 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+-- Drop the database if it exists
+DROP DATABASE IF EXISTS `movie-blog-app`;
+
+-- Create the database
+CREATE DATABASE `movie-blog-app`;
+
+-- Use the database
+USE `movie-blog-app`;
+
 --
 -- Table structure for table `film`
 --

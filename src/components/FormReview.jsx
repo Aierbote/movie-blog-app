@@ -5,12 +5,41 @@ const FormReview = ({ idFilm }) => {
     const [comment, setComment] = useState('');
     const [rating, setRating] = useState(0);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        setComment('');
-        setRating(0);
-    };
+        try {
+            const response = await sendReview();
+
+            if (response) {
+                // Aggiungi la nuova recensione alla lista nel localStorage
+                const newReview = {
+                    idFilm,
+                    rating,
+                    comment,
+                    user: 'Gamabunta',
+                    
+                };
+
+                // Recupera le recensioni dal localStorage
+                const reviewsFromStorage = JSON.parse(localStorage.getItem('reviews')) || [];
+
+                // Aggiungi la nuova recensione alla lista
+                const updatedReviews = [...reviewsFromStorage, newReview];
+
+                // Salva le recensioni aggiornate nel localStorage
+                localStorage.setItem('reviews', JSON.stringify(updatedReviews));
+
+                // Resetta il form
+                setComment('');
+                setRating(0);
+
+            }
+        } catch (error) {
+            console.error('Error sending review:', error);
+            alert('Si è verificato un errore durante l\'invio della recensione');
+        }
+    }
 
     async function sendReview() {
         try {
@@ -63,7 +92,7 @@ const FormReview = ({ idFilm }) => {
                 onChange={(e) => setComment(e.target.value)}
                 margin="normal"
             /><br />
-            <Button type="submit" variant="contained" color="primary" disabled={!isRatingValid || !isCommentValid} onClick={sendReview}>
+            <Button type="submit" variant="contained" color="primary" disabled={!isRatingValid || !isCommentValid} >
                 Invia recensione
             </Button>
         </form>

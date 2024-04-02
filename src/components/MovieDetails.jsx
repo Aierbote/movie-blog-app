@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../Context";
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 
 export function MovieDetails({ idFilm }) {
 	const [selectedMovie, setSelectedMovie] = useState({});
@@ -21,27 +22,19 @@ export function MovieDetails({ idFilm }) {
 			<h2>
 				{selectedMovie.genre} - {selectedMovie.title}
 			</h2>
-			<Box
-				sx={{
-					display: "flex",
-					alignItems: "center",
-					marginBottom: "20px",
-					maxWidth: "100vw",
-					gap: 6,
-				}}
-				mt={{ sm: 1, md: 3 }}
-			>
-				<div sx={{ flex: 1, marginRight: "20px" }}>
+			<Grid container spacing={2} mt={{ sm: 2, md: 1 }}>
+				<Grid item xs={12} md={5}>
 					<img
 						src={selectedMovie.image}
 						alt={selectedMovie.title}
 						style={{
-							maxWidth: "85vw",
-							maxHeight: "85vh",
+							objectFit: "contain",
+							width: "100%",
+							maxHeight: "100vh",
 						}}
 					/>
-				</div>
-				<Box sx={{ flex: 2 }}>
+				</Grid>
+				<Grid item xs={12} md={7}>
 					<p>
 						<strong>Anno:</strong> {selectedMovie.year}
 					</p>
@@ -71,8 +64,8 @@ export function MovieDetails({ idFilm }) {
 						vero voluptates dicta amet? Beatae, quo. Consectetur consequuntur
 						quia cum tenetur placeat.
 					</p>
-				</Box>
-			</Box>
+				</Grid>
+			</Grid>
 		</div>
 	);
 }

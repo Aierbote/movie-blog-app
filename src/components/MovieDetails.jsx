@@ -27,6 +27,7 @@ export function MovieDetails({ idFilm }) {
 					alignItems: "center",
 					marginBottom: "20px",
 					maxWidth: "100vw",
+					gap: 6,
 				}}
 				mt={{ sm: 1, md: 3 }}
 			>
@@ -40,8 +41,10 @@ export function MovieDetails({ idFilm }) {
 						}}
 					/>
 				</div>
-				<div>
-					<p>{selectedMovie.year}</p>
+				<Box sx={{ flex: 2 }}>
+					<p>
+						<strong>Anno:</strong> {selectedMovie.year}
+					</p>
 					<p>
 						<strong>Regista:</strong> {selectedMovie.director}
 					</p>
@@ -49,10 +52,26 @@ export function MovieDetails({ idFilm }) {
 						<strong>Cast:</strong> {selectedMovie.cast}
 					</p>
 					<p>
-						Descrizione: Lorem ipsum dolor sit amet, consectetur adipiscing
-						elit. Donec auctor velit eget posuere porta.
+						<strong>Descrizione:</strong> Lorem ipsum dolor sit amet consectetur
+						adipisicing elit. Officiis a possimus inventore tempore doloribus,
+						reiciendis eveniet quidem, quas assumenda tempora magni rem eligendi
+						soluta commodi fugit iusto enim fugiat. Distinctio reprehenderit,
+						deleniti, numquam sequi ratione delectus, architecto dolores placeat
+						soluta blanditiis nihil possimus! Neque amet libero accusantium
+						vitae, et nobis quam aliquid earum hic deserunt provident est
+						eveniet consequuntur ab enim totam nostrum a expedita blanditiis
+						autem qui incidunt quidem omnis! Rerum architecto voluptates aliquid
+						amet nemo maiores quibusdam ad laboriosam, dolor quos explicabo
+						animi possimus ut tenetur molestias magnam, magni maxime reiciendis
+						commodi optio expedita nulla esse? Fugit odit, magni nisi quisquam
+						dolore optio? Nemo ullam quos, dicta fugit, esse facilis similique
+						molestiae labore dolorum illo exercitationem aliquam vel minus
+						voluptatem? Dignissimos itaque fugiat saepe necessitatibus deserunt
+						ipsum quasi praesentium iste rerum nihil porro tempora, natus harum,
+						vero voluptates dicta amet? Beatae, quo. Consectetur consequuntur
+						quia cum tenetur placeat.
 					</p>
-				</div>
+				</Box>
 			</Box>
 		</div>
 	);

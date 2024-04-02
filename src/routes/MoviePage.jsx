@@ -7,6 +7,14 @@ import FormReview from "../components/FormReview";
 import Review from "../components/Review";
 import List from "@mui/material/List";
 
+function AlignItemsList({ children }) {
+	return (
+		<List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
+			{children}
+		</List>
+	);
+}
+
 export function MoviePage() {
 	const { idFilm } = useParams();
 	const { reviews, setReviews } = useAppContext();
@@ -59,8 +67,16 @@ export function MoviePage() {
 			<h1>Movie Page {idFilm}</h1>
 
 			<MovieDetails idFilm={idFilm} />
+
 			<FormReview idFilm={idFilm} />
-			<Review />
+
+			<AlignItemsList>
+				{reviews.map((review) => {
+					console.log("review", review);
+
+					return <Review key={review.id} review={review} />;
+				})}
+			</AlignItemsList>
 		</div>
 	);
 }

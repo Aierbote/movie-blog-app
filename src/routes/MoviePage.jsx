@@ -4,6 +4,8 @@ import { useAppContext } from "../Context";
 import { useNavigate } from "react-router-dom";
 import { MovieDetails } from "../components/MovieDetails";
 import FormReview from "../components/FormReview";
+import Review from "../components/Review";
+import List from "@mui/material/List";
 
 export function MoviePage() {
 	const { idFilm } = useParams();
@@ -58,6 +60,7 @@ export function MoviePage() {
 
 			<MovieDetails idFilm={idFilm} />
 			<FormReview idFilm={idFilm} />
+			<Review />
 		</div>
 	);
 }

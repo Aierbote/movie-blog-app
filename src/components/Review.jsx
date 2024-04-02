@@ -13,7 +13,10 @@ const Review = ({ review }) => {
 		<div>
 			<ListItem alignItems="flex-start">
 				<ListItemAvatar>
-					<Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+					<Avatar
+						alt={author.toUpperCase()}
+						src="/static/images/avatar/1.jpg"
+					/>
 				</ListItemAvatar>
 				<ListItemText
 					primary={

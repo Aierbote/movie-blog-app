@@ -7,6 +7,7 @@ import { MoviePage } from './routes/MoviePage';
 import { NotFound } from './routes/NotFound';
 import { memo, Suspense } from 'react';
 import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 
 const routes = [
@@ -29,10 +30,12 @@ const routes = [
   },
 ]
 
+
+const defaultTheme = createTheme();
+
 const App = memo(() => {
   return (
-    <>
-
+    <ThemeProvider theme={defaultTheme}>
 
       <BrowserRouter>
         <Navbar />
@@ -62,7 +65,7 @@ const App = memo(() => {
       </BrowserRouter>
 
       <Footer />
-    </>
+    </ThemeProvider>
   );
 })
 

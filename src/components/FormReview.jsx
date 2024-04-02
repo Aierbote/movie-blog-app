@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { TextField, Button, Rating, Typography, Box } from '@mui/material';
+import { useAppContext } from '../Context';
 
 const FormReview = ({ idFilm }) => {
     const [comment, setComment] = useState('');
     const [rating, setRating] = useState(0);
+    const {setReviews} = useAppContext();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,15 +23,13 @@ const FormReview = ({ idFilm }) => {
                     
                 };
 
-                // Recupera le recensioni dal localStorage
                 const reviewsFromStorage = JSON.parse(localStorage.getItem('reviews')) || [];
 
-                // Aggiungi la nuova recensione alla lista
                 const updatedReviews = [...reviewsFromStorage, newReview];
 
-                // Salva le recensioni aggiornate nel localStorage
                 localStorage.setItem('reviews', JSON.stringify(updatedReviews));
 
+                setReviews(updatedReviews);
                 // Resetta il form
                 setComment('');
                 setRating(0);

@@ -30,18 +30,15 @@ const pages = [
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+  const [loggedUser, setLoggedUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
 
-
-
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -50,6 +47,19 @@ function Navbar() {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const formJson = Object.fromEntries(formData.entries());
+    const username = formJson.user;
+    setLoggedUser(username);
+    handleClose();
+  }
+
+  const handleLogout = () => {
+    setLoggedUser(null);
+  }
 
   return (
     <AppBar position="static">
@@ -143,51 +153,54 @@ function Navbar() {
               </Button>
             ))}
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
-            <React.Fragment>
-              <Button  variant="contained"  onClick={handleClickOpen} sx={{ color: 'white', border: 'white solid 1px'}}>
-                Login
+            {loggedUser ? (
+              <Box textAlign="right" py={1} pr={2} sx={{ display: 'flex', alignItems: 'center' }}>
+              <Typography variant="h6" sx={{ color: 'white', mr: 2 }}>
+                Ciao, {loggedUser}
+              </Typography>
+              <Button variant="contained" onClick={handleLogout} sx={{ color: 'white', border: 'white solid 1px' }}>
+                Logout
               </Button>
-              <Dialog
-                open={open}
-                onClose={handleClose}
-                PaperProps={{
-                  component: 'form',
-                  onSubmit: (event) => {
-                    event.preventDefault();
-                    const formData = new FormData(event.currentTarget);
-                    const formJson = Object.fromEntries(formData.entries());
-                    const username = formJson.user;
-                    console.log(username);
-                    handleClose();
-                  },
-                }}
-              >
-                <DialogTitle>Effettua l'accesso</DialogTitle>
-                <DialogContent>
-                  <DialogContentText>
-                    Scrivi il tuo username
-                  </DialogContentText>
-                  <TextField
-                    autoFocus
-                    required
-                    margin="dense"
-                    id="user"
-                    name="user"
-                    label="Username"
-                    type="string"
-                    fullWidth
-                    variant="standard"
-                  />
-                </DialogContent>
-                <DialogActions>
-                  <Button onClick={handleClose}>Annulla</Button>
-                  <Button type="submit">Accedi</Button>
-                </DialogActions>
-              </Dialog>
-            </React.Fragment>
+            </Box>
+            ) : (
 
+              <React.Fragment>
+                <Button variant="contained" onClick={handleClickOpen} sx={{ color: 'white', border: 'white solid 1px' }}>
+                  Login
+                </Button>
+                <Dialog
+                  open={open}
+                  onClose={handleClose}
+                  PaperProps={{
+                    component: 'form',
+                    onSubmit: handleLogin,
+                  }}
+                >
+                  <DialogTitle>Effettua l'accesso</DialogTitle>
+                  <DialogContent>
+                    <DialogContentText>
+                      Scrivi il tuo username
+                    </DialogContentText>
+                    <TextField
+                      autoFocus
+                      required
+                      margin="dense"
+                      id="user"
+                      name="user"
+                      label="Username"
+                      type="string"
+                      fullWidth
+                      variant="standard"
+                    />
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={handleClose}>Annulla</Button>
+                    <Button type="submit">Accedi</Button>
+                  </DialogActions>
+                </Dialog>
+              </React.Fragment>
+            )}
 
           </Box>
         </Toolbar>

@@ -50,11 +50,13 @@ function Navbar() {
 		const formData = new FormData(event.currentTarget);
 		const formJson = Object.fromEntries(formData.entries());
 		const username = formJson.user;
+		localStorage.setItem("loggedUser", username);
 		setLoggedUser(username);
 		handleClose();
 	};
 
 	const handleLogout = () => {
+		localStorage.removeItem("loggedUser");
 		setLoggedUser(null);
 	};
 

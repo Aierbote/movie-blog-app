@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -25,8 +25,8 @@ const pages = [
 ];
 
 function Navbar() {
-	const [anchorElNav, setAnchorElNav] = React.useState(null);
-	const [open, setOpen] = React.useState(false);
+	const [anchorElNav, setAnchorElNav] = useState(null);
+	const [open, setOpen] = useState(false);
 	const { loggedUser, setLoggedUser } = useAppContext();
 
 	const handleOpenNavMenu = (event) => {
@@ -173,7 +173,7 @@ function Navbar() {
 								</Button>
 							</Box>
 						) : (
-							<React.Fragment>
+							<>
 								<Button
 									variant="contained"
 									onClick={handleClickOpen}
@@ -211,7 +211,7 @@ function Navbar() {
 										<Button type="submit">Accedi</Button>
 									</DialogActions>
 								</Dialog>
-							</React.Fragment>
+							</>
 						)}
 					</Box>
 				</Toolbar>

@@ -5,7 +5,7 @@ import { useAppContext } from '../Context';
 const FormReview = ({ idFilm }) => {
     const [comment, setComment] = useState('');
     const [rating, setRating] = useState(0);
-    const {setReviews} = useAppContext();
+    const {setReviews, loggedUser} = useAppContext();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,7 +19,7 @@ const FormReview = ({ idFilm }) => {
                     idFilm,
                     rating,
                     comment,
-                    user: 'Gamabunta',
+                    user: loggedUser,
                     
                 };
 

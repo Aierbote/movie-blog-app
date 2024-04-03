@@ -17,6 +17,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { useAppContext } from '../Context';
 
 
 
@@ -30,7 +31,7 @@ const pages = [
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [open, setOpen] = React.useState(false);
-  const [loggedUser, setLoggedUser] = React.useState(null);
+  const { loggedUser, setLoggedUser } = useAppContext();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -156,13 +157,13 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             {loggedUser ? (
               <Box textAlign="right" py={1} pr={2} sx={{ display: 'flex', alignItems: 'center' }}>
-              <Typography variant="h6" sx={{ color: 'white', mr: 2 }}>
-                Ciao, {loggedUser}
-              </Typography>
-              <Button variant="contained" onClick={handleLogout} sx={{ color: 'white', border: 'white solid 1px' }}>
-                Logout
-              </Button>
-            </Box>
+                <Typography variant="h6" sx={{ color: 'white', mr: 2 }}>
+                  Ciao, {loggedUser}
+                </Typography>
+                <Button variant="contained" onClick={handleLogout} sx={{ color: 'white', border: 'white solid 1px' }}>
+                  Logout
+                </Button>
+              </Box>
             ) : (
 
               <React.Fragment>

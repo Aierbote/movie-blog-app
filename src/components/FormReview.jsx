@@ -51,7 +51,7 @@ const FormReview = ({ idFilm }) => {
                 body: JSON.stringify({
                     comment,
                     rating,
-                    user: 'Gamabunta',
+                    user: loggedUser,
                     idFilm,
                 }),
             });

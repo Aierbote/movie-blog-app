@@ -13,7 +13,10 @@ const AppProvider = ({ children }) => {
 	const initialMovies = !!localStorage.getItem("movies")
 		? JSON.parse(localStorage.getItem("movies"))
 		: [];
-	const [loggedUser, setLoggedUser] = useState(null);
+	const initialLoggedUser = !!localStorage.getItem("loggedUser")
+		? localStorage.getItem("loggedUser")
+		: null;
+	const [loggedUser, setLoggedUser] = useState(initialLoggedUser);
 	const [movies, setMovies] = useState(initialMovies);
 	const [reviews, setReviews] = useState([]);
 

@@ -9,7 +9,7 @@ import List from "@mui/material/List";
 
 function AlignItemsList({ children }) {
 	return (
-		<List sx={{ width: "100%", bgcolor: "background.paper" }} maxWidth="90%">
+		<List sx={{ width: "100%", bgcolor: "background.paper" }} maxwidth="90%">
 			{children}
 		</List>
 	);
@@ -66,7 +66,7 @@ export function MoviePage() {
 		<div>
 			<h1>Movie Page {idFilm}</h1>
 
-			<MovieDetails idFilm={idFilm} />
+			<MovieDetails key={"movie/" + idFilm} idFilm={idFilm} />
 
 			{/* Reviews List */}
 			<AlignItemsList>

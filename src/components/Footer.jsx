@@ -17,7 +17,7 @@ export default function StickyFooter() {
 				}}
 			>
 				<Box
-					maxWidth="auto"
+					maxwidth="auto"
 					sx={{
 						display: "flex",
 						justifyContent: "center",

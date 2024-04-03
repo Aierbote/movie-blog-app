@@ -53,9 +53,10 @@ const App = memo(() => {
             margin: "auto",
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
+            justifyContent: "flex-start",
             minHeight: "80vh",
+            alignItems: "flex-start",
+
           }}>
           <Suspense fallback={<div>Loading...</div>}>
             <Routes>

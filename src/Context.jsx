@@ -10,37 +10,34 @@ const AppContext = createContext({
 });
 
 const AppProvider = ({ children }) => {
+	const initialMovies = !!localStorage.getItem("movies")
+		? JSON.parse(localStorage.getItem("movies"))
+		: [];
 	const [loggedUser, setLoggedUser] = useState(null);
-	const [movies, setMovies] = useState(
-		!!localStorage.getItem("movies")
-			? JSON.parse(localStorage.getItem("movies"))
-			: []
-	);
+	const [movies, setMovies] = useState(initialMovies);
 	const [reviews, setReviews] = useState([]);
 
-	async function utilityFetchMovies() {
+	async function fetchMovies() {
 		try {
 			const response = await fetch("http://localhost:8080/films");
+			if (!response.ok) throw new Error("Network response was not ok");
 
-			if (!response.ok) {
-				throw new Error("Network response was not ok");
-			}
-
-			const data = await response.json();
-			localStorage.setItem("movies", JSON.stringify(data));
-			return data;
+			const movies = await response.json();
+			//localStorage.setItem("movies", JSON.stringify(movies));
+			//setMovies(movies);
+			return movies;
 		} catch (error) {
 			console.error("Error fetching movies:", error);
 			throw error;
 		}
 	}
 
-
 	useEffect(() => {
-		if (!movies.length) {
-			const fetchedMovies = utilityFetchMovies();
-			setMovies(fetchedMovies);
-		}
+		if (movies.length === 0)
+			fetchMovies().then((movies) => {
+				localStorage.setItem("movies", JSON.stringify(movies));
+				setMovies(movies);
+			});
 	}, []);
 
 	return (

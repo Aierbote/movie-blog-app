@@ -7,31 +7,49 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MovieIcon from '@mui/icons-material/Movie';
 import { NavLink } from 'react-router-dom';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
+
+
 
 const pages = [
   { title: 'Home', path: '/' },
   { title: 'About us', path: '/about' }
 ];
 
+
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
 
- 
+
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
+
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <AppBar position="static">
@@ -127,11 +145,50 @@ function Navbar() {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
+            <React.Fragment>
+              <Button  variant="contained"  onClick={handleClickOpen} sx={{ color: 'white', border: 'white solid 1px'}}>
+                Login
+              </Button>
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                PaperProps={{
+                  component: 'form',
+                  onSubmit: (event) => {
+                    event.preventDefault();
+                    const formData = new FormData(event.currentTarget);
+                    const formJson = Object.fromEntries(formData.entries());
+                    const username = formJson.user;
+                    console.log(username);
+                    handleClose();
+                  },
+                }}
+              >
+                <DialogTitle>Effettua l'accesso</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>
+                    Scrivi il tuo username
+                  </DialogContentText>
+                  <TextField
+                    autoFocus
+                    required
+                    margin="dense"
+                    id="user"
+                    name="user"
+                    label="Username"
+                    type="string"
+                    fullWidth
+                    variant="standard"
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose}>Annulla</Button>
+                  <Button type="submit">Accedi</Button>
+                </DialogActions>
+              </Dialog>
+            </React.Fragment>
+
+
           </Box>
         </Toolbar>
       </Container>

@@ -17,7 +17,7 @@ function AlignItemsList({ children }) {
 
 export function MoviePage() {
 	const { idFilm } = useParams();
-	const { reviews, setReviews } = useAppContext();
+	const { reviews, setReviews, loggedUser } = useAppContext();
 	const navigate = useNavigate();
 
 	async function utilityFetchReviews() {
@@ -75,7 +75,14 @@ export function MoviePage() {
 				))}
 			</AlignItemsList>
 
-			<FormReview idFilm={idFilm} />
+			{!!loggedUser && (
+				<>
+					<h2>Leave a review</h2>
+					<FormReview idFilm={idFilm} />
+				</>
+			)}
+
+			{!loggedUser && <h2>Please login to leave a review</h2>}
 		</div>
 	);
 }

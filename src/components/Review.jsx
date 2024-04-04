@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import { useState, useEffect } from "react";
 import { useAppContext } from "../Context";
+import FormReview from "./FormReview";
 
 const Review = ({ review, reviewLeft, loggedUser }) => {
 	const { idReview, idFilm, rating, comment, user: author } = review;
@@ -91,6 +92,10 @@ const Review = ({ review, reviewLeft, loggedUser }) => {
 		);
 		localStorage.setItem("reviews", JSON.stringify(updatedReviews));
 	};
+
+	if (editing) {
+		return <FormReview />;
+	}
 
 	return (
 		<>

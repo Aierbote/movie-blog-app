@@ -62,7 +62,12 @@ const FormReview = ({ idFilm }) => {
 				throw new Error("Network response was not ok");
 			}
 
-			return response.json();
+			// if it's ok, let's fetch the new data to update the storage
+			const updatedResponse = await fetch(
+				`http://localhost:8080/films/${idFilm}/reviews`
+			);
+			const updatedReviews = await updatedResponse.json();
+			setReviews(updatedReviews);
 		} catch (error) {
 			console.error("Error sending review:", error);
 			throw error;
@@ -78,11 +83,17 @@ const FormReview = ({ idFilm }) => {
 			border={3}
 			padding={2}
 			borderRadius={3}
-			borderColor={'primary.main'}
+			borderColor={"primary.main"}
 		>
-
 			<form onSubmit={handleSubmit}>
-				<Box mb={2} border={2} padding={1} borderRadius={2} borderColor={'primary.main'} marginTop={1} >
+				<Box
+					mb={2}
+					border={2}
+					padding={1}
+					borderRadius={2}
+					borderColor={"primary.main"}
+					marginTop={1}
+				>
 					<Typography component="legend">Voto</Typography>
 					<Rating
 						name="rating"

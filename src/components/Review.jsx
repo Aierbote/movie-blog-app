@@ -148,10 +148,7 @@ const Review = ({ review, reviewLeft, loggedUser }) => {
 					<Button variant="outlined" onClick={handleCancel}>
 						Cancel
 					</Button>
-					<Button
-						variant="contained"
-						color="error" /* onClick={handleDelete} */
-					>
+					<Button variant="contained" color="error" onClick={handleDelete}>
 						DELETE
 					</Button>
 				</Box>

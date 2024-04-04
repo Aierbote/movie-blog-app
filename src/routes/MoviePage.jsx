@@ -69,7 +69,10 @@ export function MoviePage() {
 			{/* Reviews List */}
 			<AlignItemsList>
 				{reviews.map((review) => (
-					<Review key={review.id} review={review} />
+					<Review
+						key={`movie:${idFilm}/review:${review.idReview}`}
+						review={review}
+					/>
 				))}
 			</AlignItemsList>
 

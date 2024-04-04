@@ -10,7 +10,7 @@ const Review = ({ review }) => {
 	const { idReview, idFilm, rating, comment, user: author } = review;
 
 	return (
-		<div>
+		<>
 			<ListItem alignItems="flex-start">
 				<ListItemAvatar>
 					<Avatar
@@ -39,7 +39,7 @@ const Review = ({ review }) => {
 				/>
 			</ListItem>
 			<Divider variant="inset" component="li" />
-		</div>
+		</>
 	);
 };
 

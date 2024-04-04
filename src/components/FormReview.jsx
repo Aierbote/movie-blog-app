@@ -7,8 +7,6 @@ const FormReview = ({ idFilm, editing = false, setEditing = () => {} }) => {
 	const [rating, setRating] = useState(0);
 	// id for the review to edit
 	const [editingId, setEditingId] = useState(-1);
-	// author for the review to edit
-	const [editingAuthor, setEditingAuthor] = useState(null);
 	const { reviews, setReviews, loggedUser } = useAppContext();
 
 	function handleCancel() {
@@ -29,7 +27,7 @@ const FormReview = ({ idFilm, editing = false, setEditing = () => {} }) => {
 					body: JSON.stringify({
 						comment,
 						rating,
-						user: editingAuthor,
+						user: loggedUser,
 					}),
 				}
 			);
@@ -49,6 +47,8 @@ const FormReview = ({ idFilm, editing = false, setEditing = () => {} }) => {
 		} catch (error) {
 			console.error(`Error updating review: ${error}`);
 		}
+
+		setEditing(false);
 	};
 
 	const handleDelete = async (e) => {
@@ -100,12 +100,6 @@ const FormReview = ({ idFilm, editing = false, setEditing = () => {} }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
-		if (editing) {
-			handleUpdate(e);
-			setEditing(false);
-			return;
-		}
 
 		try {
 			const response = await sendReview();
@@ -189,12 +183,10 @@ const FormReview = ({ idFilm, editing = false, setEditing = () => {} }) => {
 				{editing && (
 					<Box display={"flex"} justifyContent={"flex-end"}>
 						<Button
-							type="submit"
+							// type="submit"
 							variant="contained"
 							color="success"
-							onClick={() => {
-								setEditing(false);
-							}}
+							onClick={handleUpdate}
 							disabled={!isRatingValid || !isCommentValid}
 						>
 							SAVE

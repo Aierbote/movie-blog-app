@@ -64,8 +64,6 @@ export function MoviePage() {
 
 	return (
 		<div>
-			<h1>Movie Page {idFilm}</h1>
-
 			<MovieDetails key={"movie/" + idFilm} idFilm={idFilm} />
 
 			{/* Reviews List */}

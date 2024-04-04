@@ -25,6 +25,8 @@ const Review = ({ review }) => {
 								component="legend"
 								variant="body2"
 								color="text.primary"
+								fontFamily={"georgia, serif"}
+								fontSize={18}
 							>
 								{author || "Anonymous"}
 							</Typography>

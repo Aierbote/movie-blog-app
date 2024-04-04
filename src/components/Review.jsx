@@ -5,7 +5,8 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
-import { useEffect } from "react";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 const Review = ({ review, reviewLeft, loggedUser }) => {
 	const { idReview, idFilm, rating, comment, user: author } = review;
@@ -21,7 +22,7 @@ const Review = ({ review, reviewLeft, loggedUser }) => {
 				</ListItemAvatar>
 				<ListItemText
 					primary={
-						<>
+						<Box display={"flex"} justifyContent={"space-between"}>
 							<Typography
 								component="legend"
 								variant="body2"
@@ -31,7 +32,10 @@ const Review = ({ review, reviewLeft, loggedUser }) => {
 							>
 								{author || "Anonymous"}
 							</Typography>
-						</>
+							{loggedUser === author && reviewLeft && (
+								<Button variant="outlined">Edit...</Button>
+							)}
+						</Box>
 					}
 					secondary={
 						<>
@@ -41,8 +45,6 @@ const Review = ({ review, reviewLeft, loggedUser }) => {
 					}
 				/>
 			</ListItem>
-
-			{loggedUser === author && reviewLeft && <button>Edit...</button>}
 
 			<Divider variant="inset" component="li" />
 		</>

@@ -7,6 +7,7 @@ import FormReview from "../components/FormReview";
 import Review from "../components/Review";
 import List from "@mui/material/List";
 
+
 function AlignItemsList({ children }) {
 	return (
 		<List sx={{ width: "100%", bgcolor: "background.paper" }} maxwidth="90%">
@@ -78,12 +79,12 @@ export function MoviePage() {
 
 			{!!loggedUser && (
 				<>
-					<h2>Leave a review</h2>
+					<h2 style={{ marginLeft: "40px" }}>Leave a review</h2>
 					<FormReview idFilm={idFilm} />
 				</>
 			)}
 
-			{!loggedUser && <h2>Please login to leave a review</h2>}
+			{!loggedUser && <h2 style={{ marginLeft: "40px" }}>Please login to leave a review</h2>}
 		</div>
 	);
 }

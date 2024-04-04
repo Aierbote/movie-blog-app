@@ -6,7 +6,7 @@
 
 ## Contributtori
 
-- Alberto Cangialosi
+- **Alberto Cangialosi**
 - Calogero Raia
 - Alessandro Russo
 
@@ -16,9 +16,9 @@ Questa è un'applicazione per un blog dedicato al cinema, sviluppata interamente
 
 ## Funzionalità
 
-- **Accesso**: Gli utenti possono registrarsi e accedere al blog.
+- **Accesso**: Gli utenti possono accedere al blog per lasciare recensioni.
 - **Visualizzazione dei Film**: Gli utenti possono cercare e visualizzare dettagli sui film.
-- **Recensioni**: Gli utenti possono scrivere e leggere recensioni sui film.
+- **Recensioni**: Chiunque può leggere recensioni, mentre utenti loggati posso scrivere, modificare o cancellare una (sola) recensione per film.
 
 ## Tecnologie Utilizzate
 

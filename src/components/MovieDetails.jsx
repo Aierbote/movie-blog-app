@@ -4,7 +4,15 @@ import Grid from "@mui/material/Grid";
 import { useNavigate } from "react-router-dom";
 
 export function MovieDetails({ idFilm }) {
-	const [selectedMovie, setSelectedMovie] = useState({});
+	const [selectedMovie, setSelectedMovie] = useState({
+		title: "Titolo",
+		genre: "Genere",
+		image:
+			"https://www.juliedray.com/wp-content/uploads/2022/01/sans-affiche.png",
+		year: "1895",
+		director: "Fratelli Lumière",
+		cast: "Treno",
+	});
 	const { movies } = useAppContext();
 	const navigate = useNavigate();
 
@@ -13,14 +21,22 @@ export function MovieDetails({ idFilm }) {
 			(movie_) => movie_.id === parseInt(idFilm)
 		);
 
+		if (!currentMovie) {
+			navigate("/NotFound");
+			return;
+		}
+
 		console.log("selectedMovie.title", selectedMovie.title);
 
 		setSelectedMovie(currentMovie);
+
+		return () => {
+			setSelectedMovie({});
+		};
 	}, []);
 
 	if (!selectedMovie) {
-		navigate("/NotFound");
-		return;
+		return null;
 	}
 
 	return (

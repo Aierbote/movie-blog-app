@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useAppContext } from "../Context";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
+import { useNavigate } from "react-router-dom";
 
 export function MovieDetails({ idFilm }) {
 	const [selectedMovie, setSelectedMovie] = useState({});
 	const { movies } = useAppContext();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const currentMovie = movies.find(
@@ -16,6 +17,11 @@ export function MovieDetails({ idFilm }) {
 
 		setSelectedMovie(currentMovie);
 	}, []);
+
+	if (!selectedMovie) {
+		navigate("/NotFound");
+		return;
+	}
 
 	return (
 		<div>

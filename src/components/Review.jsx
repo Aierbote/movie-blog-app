@@ -5,8 +5,9 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Rating from "@mui/material/Rating";
+import { useEffect } from "react";
 
-const Review = ({ review }) => {
+const Review = ({ review, reviewLeft, loggedUser }) => {
 	const { idReview, idFilm, rating, comment, user: author } = review;
 
 	return (
@@ -40,6 +41,9 @@ const Review = ({ review }) => {
 					}
 				/>
 			</ListItem>
+
+			{loggedUser === author && reviewLeft && <button>Edit...</button>}
+
 			<Divider variant="inset" component="li" />
 		</>
 	);

@@ -41,9 +41,9 @@ export function MovieDetails({ idFilm }) {
 
 	return (
 		<div>
-			<h2>
-				{selectedMovie.genre} - {selectedMovie.title}
-			</h2>
+			<h2 style={{fontFamily: 'fantasy', fontSize: 40}}>{selectedMovie.title}</h2>
+			<h5 style={{fontFamily: 'fantasy', fontSize: 30, color: 'GrayText'}}>{selectedMovie.genre}</h5>
+
 			<Grid container spacing={2} mt={{ sm: 2, md: 1 }}>
 				<Grid item xs={12} md={5}>
 					<img

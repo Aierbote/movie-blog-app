@@ -15,8 +15,27 @@ export function About() {
         textAlign: 'left', 
     };
 
+    const openProfile = (url) => {
+        window.open(url, '_blank');
+    };
+
+    const teamMemberStyle = {
+        width: '300px',
+        padding: '20px',
+        borderRadius: '20px',
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+        backgroundColor: '#f9f9f9',
+        textAlign: 'center',
+    };
+
+    const imageStyle = {
+        width: '100%',
+        borderRadius: '50%',
+        marginBottom: '10px',
+    };
+
     return (
-        <div style={{ textAlign: 'center' }} >
+        <div style={{ textAlign: 'center' }}>
             <h1 style={{ color: 'red', fontSize: '36px' }}>Chi siamo?</h1>
             <div style={descriptionStyle}>
                 <p>
@@ -38,6 +57,8 @@ export function About() {
                         Studente Steve Jobs.
                         Data Scientist per l'Analisi dei Dati dei Film.
                     </p>
+                    <button onClick={() => openProfile("https://github.com/CalogeroRaia")}>GitHub</button>
+                    <button onClick={() => openProfile("https://www.linkedin.com/in/calogero-raia-a798212b8/")}>LinkedIn</button>
                 </div>
                 <div style={teamMemberStyle}>
                     <img src="./Alberto.jpg" alt="Alberto Cangialosi" style={imageStyle} />
@@ -46,6 +67,8 @@ export function About() {
                         Studente Steve Jobs.
                         Esperto nell'utilizzo di terminali.
                     </p>
+                    <button onClick={() => openProfile("https://github.com/Aierbote")}>GitHub</button>
+                    <button onClick={() => openProfile("https://www.linkedin.com/in/alberto-cangialosi-150833265/")}>LinkedIn</button>
                 </div>
                 <div style={teamMemberStyle}>
                     <img src="./Alessandro.jpg" alt="Alessandro Russo" style={imageStyle} />
@@ -54,23 +77,10 @@ export function About() {
                         Studente Steve Jobs.
                         Specialista in User Experience (UX) e Interfaccia Utente (UI).
                     </p>
+                    <button onClick={() => openProfile("https://github.com/alexrusso97")}>GitHub</button>
+                    <button onClick={() => openProfile("https://www.linkedin.com/in/alessandro-russo-44292520a/")}>LinkedIn</button>
                 </div>
             </div>
         </div>
     );
 }
-
-const teamMemberStyle = {
-    width: '300px',
-    padding: '20px',
-    borderRadius: '20px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-    backgroundColor: '#f9f9f9',
-    textAlign: 'center',
-};
-
-const imageStyle = {
-    width: '100%',
-    borderRadius: '50%',
-    marginBottom: '10px',
-};

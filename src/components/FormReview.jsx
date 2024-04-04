@@ -73,36 +73,45 @@ const FormReview = ({ idFilm }) => {
 	const isCommentValid = comment.trim() !== "";
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<Box mb={2}>
-				<Typography component="legend">Voto</Typography>
-				<Rating
-					name="rating"
-					value={rating}
-					onChange={(event, newValue) => {
-						setRating(newValue);
-					}}
+		<Box
+			margin={5}
+			border={3}
+			padding={2}
+			borderRadius={3}
+			borderColor={'primary.main'}
+		>
+
+			<form onSubmit={handleSubmit}>
+				<Box mb={2} border={2} padding={1} borderRadius={2} borderColor={'primary.main'} marginTop={1} >
+					<Typography component="legend">Voto</Typography>
+					<Rating
+						name="rating"
+						value={rating}
+						onChange={(event, newValue) => {
+							setRating(newValue);
+						}}
+					/>
+				</Box>
+				<TextField
+					label="Scrivi la tua recensione"
+					variant="outlined"
+					multiline
+					sx={{ width: "50%" }}
+					value={comment}
+					onChange={(e) => setComment(e.target.value)}
+					margin="normal"
 				/>
-			</Box>
-			<TextField
-				label="Scrivi la tua recensione"
-				variant="outlined"
-				multiline
-				sx={{ width: "50%" }}
-				value={comment}
-				onChange={(e) => setComment(e.target.value)}
-				margin="normal"
-			/>
-			<br />
-			<Button
-				type="submit"
-				variant="contained"
-				color="primary"
-				disabled={!isRatingValid || !isCommentValid}
-			>
-				Invia recensione
-			</Button>
-		</form>
+				<br />
+				<Button
+					type="submit"
+					variant="contained"
+					color="primary"
+					disabled={!isRatingValid || !isCommentValid}
+				>
+					Invia recensione
+				</Button>
+			</form>
+		</Box>
 	);
 };
 

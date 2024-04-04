@@ -1,12 +1,11 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "../Context";
 import { useNavigate } from "react-router-dom";
 import { MovieDetails } from "../components/MovieDetails";
 import FormReview from "../components/FormReview";
 import Review from "../components/Review";
 import List from "@mui/material/List";
-
 
 function AlignItemsList({ children }) {
 	return (
@@ -20,6 +19,8 @@ export function MoviePage() {
 	const { idFilm } = useParams();
 	const { reviews, setReviews, loggedUser } = useAppContext();
 	const navigate = useNavigate();
+
+	const [reviewLeft, setReviewLeft] = useState(false);
 
 	async function utilityFetchReviews() {
 		try {
@@ -63,6 +64,23 @@ export function MoviePage() {
 		};
 	}, []);
 
+	useEffect(() => {
+		function findUserReview() {
+			const found = reviews.find((review) => {
+				return review.user === loggedUser;
+			});
+
+			if (!!found) {
+				setReviewLeft(true);
+				return;
+			}
+
+			setReviewLeft(false);
+		}
+
+		findUserReview();
+	}, [reviews, reviewLeft, loggedUser]);
+
 	return (
 		<div>
 			<MovieDetails key={"movie/" + idFilm} idFilm={idFilm} />
@@ -73,18 +91,24 @@ export function MoviePage() {
 					<Review
 						key={`movie:${idFilm}/review:${review.idReview}`}
 						review={review}
+						reviewLeft={reviewLeft}
+						loggedUser={loggedUser}
 					/>
 				))}
 			</AlignItemsList>
 
-			{!!loggedUser && (
+			{!loggedUser && <h2>Please login to leave a review</h2>}
+
+			{reviewLeft && (
 				<>
 					<h2 style={{ marginLeft: "40px" }}>Leave a review</h2>
 					<FormReview idFilm={idFilm} />
 				</>
 			)}
 
-			{!loggedUser && <h2 style={{ marginLeft: "40px" }}>Please login to leave a review</h2>}
+			{!loggedUser && (
+				<h2 style={{ marginLeft: "40px" }}>Please login to leave a review</h2>
+			)}
 		</div>
 	);
 }

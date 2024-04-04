@@ -1,13 +1,35 @@
 import React from 'react';
 
 export function About() {
+    const descriptionStyle = {
+        fontWeight: 'bold',
+        fontSize: '20px',
+        lineHeight: '1.5',
+        margin: '20px 10%',
+        padding: '20px',
+        backgroundColor: '#f9f9f9',
+        border: '2px solid #ccc',
+        borderRadius: '10px',
+        boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+        maxWidth: '100%',
+        textAlign: 'left', 
+    };
+
     return (
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ textAlign: 'center' }} >
             <h1 style={{ color: 'red', fontSize: '36px' }}>Chi siamo?</h1>
-            <p style={{ fontWeight: 'bold', fontSize: '24px', lineHeight: '1.8' }}>
-                Siamo degli studenti della Steve Jobs, esperti nell'uso di linguaggi di programmazione come: Python, PHP, Java, JavaScript, Pandas, React, Angular, HTML e CSS.
-                Siamo un gruppo di giovani programmatori che hanno trovato la propria passione nel mondo della programmazione. Amiamo ciò che facciamo e ci dedichiamo con entusiasmo e passione a ogni progetto che affrontiamo. La nostra gioia deriva dall'affrontare sfide complesse, risolvere problemi intricati e creare soluzioni innovative che possano fare la differenza. Siamo appassionati di codice e tecnologia, e la nostra curiosità insaziabile ci spinge sempre a imparare e a migliorare le nostre competenze. Crediamo che il nostro lavoro possa contribuire a rendere il mondo un posto migliore e siamo determinati a lasciare un'impronta positiva con ogni riga di codice che scriviamo. In sintesi, siamo programmatori con un cuore pieno di passione per la tecnologia e un'inesauribile voglia di creare e innovare.
-            </p>
+            <div style={descriptionStyle}>
+                <p>
+                    Siamo studenti della Steve Jobs School, esperti nei linguaggi di programmazione come Python, PHP, Java, JavaScript, Pandas, React, Angular, HTML e CSS.
+                </p>
+                <p> Siamo un gruppo di giovani programmatori che hanno trovato la propria passione nel mondo della programmazione.</p>
+                <p>Amiamo ciò che facciamo e ci dedichiamo con entusiasmo e passione ad ogni progetto che affrontiamo. </p>
+                <p>La nostra gioia deriva dall'affrontare sfide complesse, risolvere problemi intricati e creare soluzioni innovative che possano fare la differenza.</p>
+                <p>Siamo appassionati di codice e tecnologia, e la nostra curiosità insaziabile ci spinge sempre a imparare e a migliorare le nostre competenze.</p>
+                <p>Crediamo che il nostro lavoro possa contribuire a rendere il mondo un posto migliore, e siamo determinati a lasciare un'impronta positiva con ogni riga di codice che scriviamo.</p>
+                <p>In sintesi, siamo programmatori con un cuore pieno di passione per la tecnologia e un'inesauribile voglia di creare e innovare. </p>
+                
+            </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                 <div style={teamMemberStyle}>
                     <img src="./Calogero.jpg" alt="Calogero Raia" style={imageStyle} />

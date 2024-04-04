@@ -99,7 +99,7 @@ export function MoviePage() {
 
 			{!loggedUser && <h2>Please login to leave a review</h2>}
 
-			{reviewLeft && (
+			{!reviewLeft && (
 				<>
 					<h2 style={{ marginLeft: "40px" }}>Leave a review</h2>
 					<FormReview idFilm={idFilm} />

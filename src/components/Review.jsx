@@ -15,8 +15,8 @@ const Review = ({ review, reviewLeft, loggedUser }) => {
 	const { reviews, setReviews } = useAppContext();
 	const [editing, setEditing] = useState(false);
 
-	function handleEdit() {
-		setEditing(true);
+	function toggleEdit() {
+		setEditing((prevEditing) => !prevEditing);
 	}
 
 	function handleCancel() {
@@ -114,7 +114,17 @@ const Review = ({ review, reviewLeft, loggedUser }) => {
 								{author || "Anonymous"}
 							</Typography>
 							{loggedUser === author && reviewLeft && (
-								<Button variant="outlined">Edit...</Button>
+								<Button
+									variant="contained"
+									// color="primary"
+									color={!editing ? "primary" : "success"}
+									onClick={() => {
+										toggleEdit();
+									}}
+								>
+									{!editing && "Edit..."}
+									{editing && "SAVE"}
+								</Button>
 							)}
 						</Box>
 					}
@@ -126,6 +136,26 @@ const Review = ({ review, reviewLeft, loggedUser }) => {
 					}
 				/>
 			</ListItem>
+
+			{editing && (
+				<Box
+					display="flex"
+					flexDirection="row"
+					justifyContent="flex-end"
+					gap="1rem"
+					margin={1}
+				>
+					<Button variant="outlined" onClick={handleCancel}>
+						Cancel
+					</Button>
+					<Button
+						variant="contained"
+						color="error" /* onClick={handleDelete} */
+					>
+						DELETE
+					</Button>
+				</Box>
+			)}
 
 			<Divider variant="inset" component="li" />
 		</>

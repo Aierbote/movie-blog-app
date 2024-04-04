@@ -50,14 +50,30 @@ Questa è un'applicazione per un blog dedicato al cinema, sviluppata interamente
    npm install
    ```
 
-4. Avvia l'applicazione:
+4. Per avviare il database in locale importiamo il file di backup mysql `movie-blog-app.sql` su [XAMPP][xampp] (usa la sua porta 3306 di defeault)
+
+5. Per comunicare col DataBase facciamo partire l'API node con un package script:
+
    ```
-   npm start
+   npm run start-api
    ```
-5. Crea un file `.env.local` per configurare le necessarie variabili d'ambiente in locale.
+
+6. Avvia l'applicazione:
+
+   ```
+   npm run start
+   ```
+
+7. Crea un file `.env.local` per configurare le necessarie variabili d'ambiente in locale.
+
+> [!IMPORTANT]
+>
+> Per evitare problemi con le policy CORS usiamo l'estensione [Moesif Origin & CORS][cors-policy-extension] per Chrome. A volte, in caso di fetch fail, non si riesce ad entrare nella rotta `movie/{idfilm}`, per evitare il rendirrizzamento errato, riavvia l'estension Moesif.
 
 [git]: https://git-scm.com/book/it/v2/Per-Iniziare-Installing-Git
 [node]: https://nodejs.org/en/download
+[xampp]: https://www.apachefriends.org/it/download.html
+[cors-policy-extension]: https://chromewebstore.google.com/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc
 
 ---
 

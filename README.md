@@ -16,11 +16,9 @@ Questa è un'applicazione per un blog dedicato al cinema, sviluppata interamente
 
 ## Funzionalità
 
-- **Registrazione/Accesso**: Gli utenti possono registrarsi e accedere al blog.
+- **Accesso**: Gli utenti possono registrarsi e accedere al blog.
 - **Visualizzazione dei Film**: Gli utenti possono cercare e visualizzare dettagli sui film.
 - **Recensioni**: Gli utenti possono scrivere e leggere recensioni sui film.
-- **Categorie**: Gli utenti possono cercare i film per categoria.
-- **Classifiche**: Gli utenti possono visualizzare classifiche dei film.
 
 ## Tecnologie Utilizzate
 

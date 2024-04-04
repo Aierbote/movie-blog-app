@@ -64,14 +64,15 @@ export function MoviePage() {
 
 	return (
 		<div>
-			<h1>Movie Page {idFilm}</h1>
-
 			<MovieDetails key={"movie/" + idFilm} idFilm={idFilm} />
 
 			{/* Reviews List */}
 			<AlignItemsList>
 				{reviews.map((review) => (
-					<Review key={review.id} review={review} />
+					<Review
+						key={`movie:${idFilm}/review:${review.idReview}`}
+						review={review}
+					/>
 				))}
 			</AlignItemsList>
 

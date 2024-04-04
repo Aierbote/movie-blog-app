@@ -33,7 +33,13 @@ export function About() {
 
     return (
         <div style={pageStyle}>
-            <h1 style={{ color: 'red', fontSize: '36px' }}>Chi siamo?</h1>
+=======
+        textAlign: 'left', 
+    };
+
+    return (
+        <div style={{ textAlign: 'center' }} >
+      <h1 style={{ color: 'red', fontSize: '36px' }}>Chi siamo?</h1>
             <div style={descriptionStyle}>
                 <p>
                     Siamo studenti della Steve Jobs School, esperti nei linguaggi di programmazione come Python, PHP, Java, JavaScript, Pandas, React, Angular, HTML e CSS.
@@ -44,11 +50,16 @@ export function About() {
                 <p>Siamo appassionati di codice e tecnologia, e la nostra curiosità insaziabile ci spinge sempre a imparare e a migliorare le nostre competenze.</p>
                 <p>Crediamo che il nostro lavoro possa contribuire a rendere il mondo un posto migliore, e siamo determinati a lasciare un'impronta positiva con ogni riga di codice che scriviamo.</p>
                 <p>In sintesi, siamo programmatori con un cuore pieno di passione per la tecnologia e un'inesauribile voglia di creare e innovare. </p>
+
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '20px' }}>
                 <div style={teamMemberStyle}>
                     <img src="./Calogero.jpg" alt="Calogero Raia" style={imageStyle} />
+
                     <p style={teamMemberTextStyle}>
+
+                    <p>
+
                         Calogero Raia programmatore.
                         Studente Steve Jobs.
                         Data Scientist per l'Analisi dei Dati dei Film.
@@ -56,16 +67,27 @@ export function About() {
                 </div>
                 <div style={teamMemberStyle}>
                     <img src="./Alberto.jpg" alt="Alberto Cangialosi" style={imageStyle} />
+
                     <p style={teamMemberTextStyle}>
                         Alberto Cangialosi programmatore team leader project work.
                         Studente Steve Jobs.
                         Utente macOS appassionato di Shortcuts Molto confidente col Terminale e Git , con un debole per Python.
                         Molto interessato ad apprendere  React
+
+                    <p>
+                        Alberto Cangialosi programmatore team leader project work.
+                        Studente Steve Jobs.
+                        Esperto nell'utilizzo di terminali.
+
                     </p>
                 </div>
                 <div style={teamMemberStyle}>
                     <img src="./Alessandro.jpg" alt="Alessandro Russo" style={imageStyle} />
+
                     <p style={teamMemberTextStyle}>
+
+                    <p>
+
                         Alessandro Russo programmatore.
                         Studente Steve Jobs.
                         Specialista in User Experience (UX) e Interfaccia Utente (UI).

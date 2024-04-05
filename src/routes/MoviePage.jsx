@@ -97,16 +97,16 @@ export function MoviePage() {
 				))}
 			</AlignItemsList>
 
-			{!loggedUser && <h2>Please login to leave a review</h2>}
+			{/* {!loggedUser && <h2>Please login to leave a review</h2>} */}
 
-			{!reviewLeft && (
+			{!reviewLeft && !!loggedUser && (
 				<>
 					<h2 style={{ marginLeft: "40px" }}>Leave a review</h2>
 					<FormReview idFilm={idFilm} />
 				</>
 			)}
 
-			{!loggedUser && (
+			{!loggedUser && !reviewLeft && (
 				<h2 style={{ marginLeft: "40px" }}>Please login to leave a review</h2>
 			)}
 		</div>
